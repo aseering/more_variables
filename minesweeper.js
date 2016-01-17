@@ -15,14 +15,14 @@ var state = {
 },
 config = {
     box_size: 30,
-    x_size: 450,
-    y_size: 450,
+    x_size: 480,
+    y_size: 480,
     a2435: 100,
     a5782: 'white',
     b8314: '14px Arial',
     c9582: '#dadada',
     c1844: 'white',
-    b3111: 5,
+    b3111: 8,
     b4818: 'skull.png'
 },
 _0x1fb4x3 = {};
@@ -37,8 +37,8 @@ var _0x1fb4x4 = {
         board_2dcontext = board[0]['getContext']('2d');
         board_2dcontext['a5782'] = config['a5782'];
         board_2dcontext['font'] = config['b8314'];
-        state['width'] = Math['floor'](config['x_size'] / config['box_size']);
-        state['height'] = Math['floor'](config['y_size'] / config['box_size']);
+        state['width'] = Math['floor'](config['x_size'] / config['box_size']) - 1;
+        state['height'] = Math['floor'](config['y_size'] / config['box_size']) - 1;
         state['b8377'] = new Array(state['width'] * state['height']);
         state['b8377'][0] = new Array(state['width'] * state['height']);
         state['b8377'][0][0] = 1;
@@ -233,6 +233,12 @@ var _0x1fb4x21 = {
                 this['c1168'](_0x1fb4xd, _0x1fb4x22)
             }
         };
+        for (var x = 0; x <= state['width']; x++) {
+          this['c1168'](x, state['height']);
+        };
+        for (var y = 0; y < state['height']; y++) {
+          this['c1168'](state['width'], y);
+        };
     },
     b9987: function(_0x1fb4x23) {
         var _0x1fb4x24 = [
@@ -279,11 +285,11 @@ var _0x1fb4x21 = {
             }
         }
     },
-    c1168: function(_0x1fb4xe, _0x1fb4xf) {
+    c1168: function(x, y) {
         var _0x1fb4x2a = config['box_size'] - 1,
             _0x1fb4x2b = config['box_size'] - 1,
-            _0x1fb4xe = _0x1fb4xe * config['box_size'],
-            _0x1fb4xf = _0x1fb4xf * config['box_size'];
+            _0x1fb4xe = x * config['box_size'],
+            _0x1fb4xf = y * config['box_size'];
         board_2dcontext['beginPath']();
         board_2dcontext['moveTo'](_0x1fb4xe + config['b3111'], _0x1fb4xf);
         board_2dcontext['lineTo'](_0x1fb4xe + _0x1fb4x2a - config['b3111'], _0x1fb4xf);
@@ -295,8 +301,24 @@ var _0x1fb4x21 = {
         board_2dcontext['lineTo'](_0x1fb4xe, _0x1fb4xf + config['b3111']);
         board_2dcontext['quadraticCurveTo'](_0x1fb4xe, _0x1fb4xf, _0x1fb4xe + config['b3111'], _0x1fb4xf);
         board_2dcontext['closePath']();
-        board_2dcontext['stroke']();
-        board_2dcontext['fill']();
+        //board_2dcontext['stroke']();
+        var oldFill = board_2dcontext['fillStyle'];
+        if ((x < state['width']) && (y < state['height'])) {
+            board_2dcontext['fill']();
+            return;
+        }
+        var labelText = '  ';
+        if (x == state['width']) {
+          labelText = '' + (2 + y);
+        } else if (y == state['height']) {
+          labelText = String.fromCharCode(66 + x);
+        }
+        if (x == y)
+          labelText = '  ';
+        board_2dcontext['fillStyle'] = 'black';
+        board_2dcontext['moveTo'](_0x1fb4xe + config['b3111'], _0x1fb4xf);
+        board_2dcontext['fillText'](labelText, (_0x1fb4xe) + 5, (_0x1fb4xf) + 20);
+        board_2dcontext['fillStyle'] = oldFill;
     }
 };
 
