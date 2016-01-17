@@ -54,11 +54,11 @@ var _0x1fb4x4 = {
         };
         state['neighbor_values'] = new Array(state['width']);
         state['has_been_clicked'] = new Array(state['width']);
-        _0x1fb4x3['c9381'] = $('#restartbtn');
+        _0x1fb4x3['restartbtn'] = $('#restartbtn');
         _0x1fb4x3['undo'] = $('#undobtn');
-        _0x1fb4x3['c9381']['on']({
+        _0x1fb4x3['restartbtn']['on']({
             click: function() {
-                _0x1fb4x4['c4419']()
+                _0x1fb4x4['do_restart']()
             }
         });
         _0x1fb4x3['undo']['on']({
@@ -76,9 +76,9 @@ var _0x1fb4x4 = {
         });
         state['a5555'] = new Image();
         state['a5555']['src'] = config['b4818'];
-        _0x1fb4x4['c4419']();
+        _0x1fb4x4['do_restart']();
     },
-    c4419: function() {
+    do_restart: function() {
         board_2dcontext['strokeStyle'] = config['c1844'];
         board_2dcontext['fillStyle'] = config['c9582'];
         board_2dcontext['clearRect'](0, 0, config['x_size'], config['y_size']);
