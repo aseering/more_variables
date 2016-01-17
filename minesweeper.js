@@ -5,8 +5,8 @@ var _0x1fb4x1 = {
     a2811: null,
     a9485: null,
     a9699: 0,
-    a3829: null,
-    a1122: '',
+    undo_stack: null,
+    neighbor_values: '',
     b9381: '',
     b1124: '',
     b2456: new Array(2),
@@ -52,7 +52,7 @@ var _0x1fb4x4 = {
                 _0x1fb4x1['b8377'][_0x1fb4x6][_0x1fb4x5] = _0x1fb4x1['b8377'][_0x1fb4x6 - 1][_0x1fb4x5] + _0x1fb4x1['b8377'][_0x1fb4x6 - 1][_0x1fb4x5 - 1]
             };
         };
-        _0x1fb4x1['a1122'] = new Array(_0x1fb4x1['c8921']);
+        _0x1fb4x1['neighbor_values'] = new Array(_0x1fb4x1['c8921']);
         _0x1fb4x1['b9381'] = new Array(_0x1fb4x1['c8921']);
         _0x1fb4x3['c9381'] = $('#restartbtn');
         _0x1fb4x3['a7812'] = $('#undobtn');
@@ -82,10 +82,10 @@ var _0x1fb4x4 = {
         board_2dcontext['strokeStyle'] = _0x1fb4x2['c1844'];
         board_2dcontext['fillStyle'] = _0x1fb4x2['c9582'];
         board_2dcontext['clearRect'](0, 0, _0x1fb4x2['x_size'], _0x1fb4x2['y_size']);
-        _0x1fb4x1['a3829'] = Array();
+        _0x1fb4x1['undo_stack'] = Array();
         _0x1fb4x1['a9483'] = false;
         _0x1fb4x1['a9699'] = _0x1fb4x2['a2435'];
-        _0x1fb4x1['a1122'] = undefined;
+        _0x1fb4x1['neighbor_values'] = undefined;
         _0x1fb4x1['b9381'] = Array(_0x1fb4x1['c8921']);
         for (var _0x1fb4x8 = 0; _0x1fb4x8 < _0x1fb4x1['c8921']; _0x1fb4x8++) {
             _0x1fb4x1['b9381'][_0x1fb4x8] = Array(_0x1fb4x1['a9265'])
@@ -116,13 +116,13 @@ var _0x1fb4xa = {
 	this.handle_event_on_coord(box_x_coord, box_y_coord);
     },
     handle_event_on_coord: function(box_x_coord, box_y_coord) {
-        _0x1fb4x1['a3829']['push']([box_x_coord, box_y_coord]);
+        _0x1fb4x1['undo_stack']['push']([box_x_coord, box_y_coord]);
         _0x1fb4x1['b9381'][box_x_coord][box_y_coord] = 1;
         for (var _0x1fb4xd = 0; _0x1fb4xd < _0x388fx3[box_y_coord][box_x_coord]['length']; _0x1fb4xd++) {
             _0x1fb4x1['b3817'][_0x388fx3[box_y_coord][box_x_coord][_0x1fb4xd]] += _0x388fx4[box_y_coord][box_x_coord][_0x1fb4xd]
         };
-        _0x1fb4x1['a1122'] = this['compute_neighbor_values']();
-        if (_0x1fb4x1['a1122']) {
+        _0x1fb4x1['neighbor_values'] = this['compute_neighbor_values']();
+        if (_0x1fb4x1['neighbor_values']) {
             _0x1fb4x21['b4256']()
         } else {
             board_2dcontext['drawImage'](_0x1fb4x1['a5555'], box_x_coord * _0x1fb4x2['box_size'], box_y_coord * _0x1fb4x2['box_size'], _0x1fb4x2['box_size'], _0x1fb4x2['box_size']);
@@ -149,20 +149,20 @@ var _0x1fb4xa = {
         }
     },
     a7812: function() {
-        if (_0x1fb4x1['a3829']['length'] === 0) {
+        if (_0x1fb4x1['undo_stack']['length'] === 0) {
             return
         };
-        var _0x1fb4x13 = _0x1fb4x1['a3829']['pop']();
+        var _0x1fb4x13 = _0x1fb4x1['undo_stack']['pop']();
         var _0x1fb4xe = _0x1fb4x13[0],
             _0x1fb4xf = _0x1fb4x13[1];
         _0x1fb4x1['b9381'][_0x1fb4xe][_0x1fb4xf] = 0;
         for (var _0x1fb4xd = 0; _0x1fb4xd < _0x388fx3[_0x1fb4xf][_0x1fb4xe]['length']; _0x1fb4xd++) {
             _0x1fb4x1['b3817'][_0x388fx3[_0x1fb4xf][_0x1fb4xe][_0x1fb4xd]] -= _0x388fx4[_0x1fb4xf][_0x1fb4xe][_0x1fb4xd]
         };
-        _0x1fb4x1['a1122'] = this['compute_neighbor_values']();
+        _0x1fb4x1['neighbor_values'] = this['compute_neighbor_values']();
         board_2dcontext['fillStyle'] = _0x1fb4x2['c9582'];
         _0x1fb4x21['c1168'](_0x1fb4xe, _0x1fb4xf);
-        if (_0x1fb4x1['a1122']) {
+        if (_0x1fb4x1['neighbor_values']) {
             _0x1fb4x21['b4256']();
             _0x1fb4x1['a9483'] = false;
         };
@@ -265,9 +265,9 @@ var _0x1fb4x21 = {
                     board_2dcontext['strokeStyle'] = 'white';
                     board_2dcontext['fillStyle'] = 'white';
                     this['c1168'](_0x1fb4xe, _0x1fb4xf);
-                    var _0x1fb4x29 = this['b9987'](_0x1fb4x1['a1122'][_0x1fb4xe][_0x1fb4xf]);
+                    var _0x1fb4x29 = this['b9987'](_0x1fb4x1['neighbor_values'][_0x1fb4xe][_0x1fb4xf]);
                     board_2dcontext['fillStyle'] = 'rgb(' + _0x1fb4x29[0] + ',' + _0x1fb4x29[1] + ',' + _0x1fb4x29[2] + ')';
-                    board_2dcontext['fillText'](_0x1fb4x1['a1122'][_0x1fb4xe][_0x1fb4xf]['toFixed'](1), (_0x1fb4xe * _0x1fb4x2['box_size']) + 5, (_0x1fb4xf * _0x1fb4x2['box_size']) + 20);
+                    board_2dcontext['fillText'](_0x1fb4x1['neighbor_values'][_0x1fb4xe][_0x1fb4xf]['toFixed'](1), (_0x1fb4xe * _0x1fb4x2['box_size']) + 5, (_0x1fb4xf * _0x1fb4x2['box_size']) + 20);
                 }
             }
         }
