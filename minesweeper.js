@@ -71,7 +71,7 @@ var _0x1fb4x4 = {
                 _0x1fb4xa.handle_mouse_up(arg)
             },
             mousemove: function(arg) {
-                _0x1fb4xa['hover'](arg)
+                //_0x1fb4xa['hover'](arg)
             }
         });
         _0x1fb4x1['a5555'] = new Image();
@@ -123,7 +123,7 @@ var _0x1fb4xa = {
         };
         _0x1fb4x1['neighbor_values'] = this['compute_neighbor_values']();
         if (_0x1fb4x1['neighbor_values']) {
-            _0x1fb4x21['b4256']()
+            _0x1fb4x21['render_neighbor_values']()
         } else {
             board_2dcontext['drawImage'](_0x1fb4x1['a5555'], box_x_coord * _0x1fb4x2['box_size'], box_y_coord * _0x1fb4x2['box_size'], _0x1fb4x2['box_size'], _0x1fb4x2['box_size']);
             _0x1fb4x1['a9483'] = true;
@@ -163,7 +163,7 @@ var _0x1fb4xa = {
         board_2dcontext['fillStyle'] = _0x1fb4x2['c9582'];
         _0x1fb4x21['c1168'](_0x1fb4xe, _0x1fb4xf);
         if (_0x1fb4x1['neighbor_values']) {
-            _0x1fb4x21['b4256']();
+            _0x1fb4x21['render_neighbor_values']();
             _0x1fb4x1['a9483'] = false;
         };
     },
@@ -258,17 +258,22 @@ var _0x1fb4x21 = {
         };
         return _0x1fb4x14;
     },
-    b4256: function() {
+    render_neighbor_values: function() {
+        // hacked to draw on all squares
         for (var _0x1fb4xe = 0; _0x1fb4xe < _0x1fb4x1['c8921']; _0x1fb4xe++) {
             for (var _0x1fb4xf = 0; _0x1fb4xf < _0x1fb4x1['a9265']; _0x1fb4xf++) {
                 if (_0x1fb4x1['b9381'][_0x1fb4xe][_0x1fb4xf]) {
                     board_2dcontext['strokeStyle'] = 'white';
                     board_2dcontext['fillStyle'] = 'white';
                     this['c1168'](_0x1fb4xe, _0x1fb4xf);
-                    var _0x1fb4x29 = this['b9987'](_0x1fb4x1['neighbor_values'][_0x1fb4xe][_0x1fb4xf]);
-                    board_2dcontext['fillStyle'] = 'rgb(' + _0x1fb4x29[0] + ',' + _0x1fb4x29[1] + ',' + _0x1fb4x29[2] + ')';
-                    board_2dcontext['fillText'](_0x1fb4x1['neighbor_values'][_0x1fb4xe][_0x1fb4xf]['toFixed'](1), (_0x1fb4xe * _0x1fb4x2['box_size']) + 5, (_0x1fb4xf * _0x1fb4x2['box_size']) + 20);
+                } else {
+                    board_2dcontext['strokeStyle'] = '#dadada';
+                    board_2dcontext['fillStyle'] = '#dadada';
+                    this['c1168'](_0x1fb4xe, _0x1fb4xf);
                 }
+                var _0x1fb4x29 = this['b9987'](_0x1fb4x1['neighbor_values'][_0x1fb4xe][_0x1fb4xf]);
+                board_2dcontext['fillStyle'] = 'rgb(' + _0x1fb4x29[0] + ',' + _0x1fb4x29[1] + ',' + _0x1fb4x29[2] + ')';
+                board_2dcontext['fillText'](_0x1fb4x1['neighbor_values'][_0x1fb4xe][_0x1fb4xf]['toFixed'](1), (_0x1fb4xe * _0x1fb4x2['box_size']) + 5, (_0x1fb4xf * _0x1fb4x2['box_size']) + 20);
             }
         }
     },
