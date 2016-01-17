@@ -170,7 +170,7 @@ var _0x1fb4xa = {
         for (var _0x1fb4x17 = 0; _0x1fb4x17 < _0x1fb4x1['c8921']; _0x1fb4x17++) {
             _0x1fb4x14[_0x1fb4x17] = Array(_0x1fb4x1['a9265']);
             for (var _0x1fb4x18 = 0; _0x1fb4x18 < _0x1fb4x1['a9265']; _0x1fb4x18++) {
-                if (_0x1fb4x1['b9381'][_0x1fb4x17][_0x1fb4x18]) {
+                if (true) {
                     _0x1fb4x14[_0x1fb4x17][_0x1fb4x18] = 1;
                     _0x1fb4x16 = 1;
                     for (var _0x1fb4x19 = 0; _0x1fb4x19 <= 1; _0x1fb4x19++) {
@@ -215,6 +215,7 @@ var _0x1fb4xa = {
         if (_0x1fb4x16 && _0x1fb4x15 < 0.01) {
             return undefined
         };
+        console.log(_0x1fb4x14);
         return _0x1fb4x14;
     }
 };
