@@ -117,7 +117,7 @@ var _0x1fb4xa = {
         for (var _0x1fb4xd = 0; _0x1fb4xd < _0x388fx3[_0x1fb4xc][_0x1fb4xb]['length']; _0x1fb4xd++) {
             _0x1fb4x1['b3817'][_0x388fx3[_0x1fb4xc][_0x1fb4xb][_0x1fb4xd]] += _0x388fx4[_0x1fb4xc][_0x1fb4xb][_0x1fb4xd]
         };
-        _0x1fb4x1['a1122'] = this['c1849']();
+        _0x1fb4x1['a1122'] = this['compute_neighbor_values']();
         if (_0x1fb4x1['a1122']) {
             _0x1fb4x21['b4256']()
         } else {
@@ -155,7 +155,7 @@ var _0x1fb4xa = {
         for (var _0x1fb4xd = 0; _0x1fb4xd < _0x388fx3[_0x1fb4xf][_0x1fb4xe]['length']; _0x1fb4xd++) {
             _0x1fb4x1['b3817'][_0x388fx3[_0x1fb4xf][_0x1fb4xe][_0x1fb4xd]] -= _0x388fx4[_0x1fb4xf][_0x1fb4xe][_0x1fb4xd]
         };
-        _0x1fb4x1['a1122'] = this['c1849']();
+        _0x1fb4x1['a1122'] = this['compute_neighbor_values']();
         board_2dcontext['fillStyle'] = _0x1fb4x2['c9582'];
         _0x1fb4x21['c1168'](_0x1fb4xe, _0x1fb4xf);
         if (_0x1fb4x1['a1122']) {
@@ -163,7 +163,7 @@ var _0x1fb4xa = {
             _0x1fb4x1['a9483'] = false;
         };
     },
-    c1849: function() {
+    compute_neighbor_values: function() {
         var _0x1fb4x14 = Array(_0x1fb4x1['c8921']);
         var _0x1fb4x15 = 0,
             _0x1fb4x16 = 0;
