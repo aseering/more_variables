@@ -71,7 +71,6 @@ var _0x1fb4x4 = {
                 _0x1fb4xa.handle_mouse_up(_0x1fb4x7)
             },
             mousemove: function(arg) {
-		console.log(arg);
                 _0x1fb4xa['hover'](arg)
             }
         });
