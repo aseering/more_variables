@@ -14,9 +14,9 @@ var _0x1fb4x1 = {
     a9265: ''
 },
 _0x1fb4x2 = {
-    b8375: 30,
-    c1948: 450,
-    a6666: 450,
+    box_size: 30,
+    x_size: 450,
+    y_size: 450,
     a2435: 100,
     a5782: 'white',
     b8314: '14px Arial',
@@ -37,8 +37,8 @@ var _0x1fb4x4 = {
         board_2dcontext = board[0]['getContext']('2d');
         board_2dcontext['a5782'] = _0x1fb4x2['a5782'];
         board_2dcontext['font'] = _0x1fb4x2['b8314'];
-        _0x1fb4x1['c8921'] = Math['floor'](_0x1fb4x2['c1948'] / _0x1fb4x2['b8375']);
-        _0x1fb4x1['a9265'] = Math['floor'](_0x1fb4x2['a6666'] / _0x1fb4x2['b8375']);
+        _0x1fb4x1['c8921'] = Math['floor'](_0x1fb4x2['x_size'] / _0x1fb4x2['box_size']);
+        _0x1fb4x1['a9265'] = Math['floor'](_0x1fb4x2['y_size'] / _0x1fb4x2['box_size']);
         _0x1fb4x1['b8377'] = new Array(_0x1fb4x1['c8921'] * _0x1fb4x1['a9265']);
         _0x1fb4x1['b8377'][0] = new Array(_0x1fb4x1['c8921'] * _0x1fb4x1['a9265']);
         _0x1fb4x1['b8377'][0][0] = 1;
@@ -67,8 +67,8 @@ var _0x1fb4x4 = {
             }
         });
         board['on']({
-            mouseup: function(_0x1fb4x7) {
-                _0x1fb4xa.handle_mouse_up(_0x1fb4x7)
+            mouseup: function(arg) {
+                _0x1fb4xa.handle_mouse_up(arg)
             },
             mousemove: function(arg) {
                 _0x1fb4xa['hover'](arg)
@@ -81,7 +81,7 @@ var _0x1fb4x4 = {
     c4419: function() {
         board_2dcontext['strokeStyle'] = _0x1fb4x2['c1844'];
         board_2dcontext['fillStyle'] = _0x1fb4x2['c9582'];
-        board_2dcontext['clearRect'](0, 0, _0x1fb4x2['c1948'], _0x1fb4x2['a6666']);
+        board_2dcontext['clearRect'](0, 0, _0x1fb4x2['x_size'], _0x1fb4x2['y_size']);
         _0x1fb4x1['a3829'] = Array();
         _0x1fb4x1['a9483'] = false;
         _0x1fb4x1['a9699'] = _0x1fb4x2['a2435'];
@@ -99,17 +99,17 @@ var _0x1fb4x4 = {
     }
 };
 var _0x1fb4xa = {
-    handle_mouse_up: function(_0x1fb4x7) {
-        if (_0x1fb4x7['which'] === 3) {
+    handle_mouse_up: function(arg) {
+        if (arg['which'] === 3) {
             this['a7812']();
             return true;
         };
         if (_0x1fb4x1['a9483']) {
             return false
         };
-        var _0x1fb4xb = Math['max'](0, Math['floor']((_0x1fb4x7['pageX'] - board[0]['offsetLeft']) / _0x1fb4x2['b8375'])),
-            _0x1fb4xc = Math['max'](0, Math['floor']((_0x1fb4x7['pageY'] - board[0]['offsetTop']) / _0x1fb4x2['b8375']));
-        if (_0x1fb4x7['which'] !== 1 || _0x1fb4x1['b9381'][_0x1fb4xb][_0x1fb4xc]) {
+        var _0x1fb4xb = Math['max'](0, Math['floor']((arg['pageX'] - board[0]['offsetLeft']) / _0x1fb4x2['box_size'])),
+            _0x1fb4xc = Math['max'](0, Math['floor']((arg['pageY'] - board[0]['offsetTop']) / _0x1fb4x2['box_size']));
+        if (arg['which'] !== 1 || _0x1fb4x1['b9381'][_0x1fb4xb][_0x1fb4xc]) {
             return false
         };
         _0x1fb4x1['a3829']['push']([_0x1fb4xb, _0x1fb4xc]);
@@ -121,14 +121,14 @@ var _0x1fb4xa = {
         if (_0x1fb4x1['a1122']) {
             _0x1fb4x21['b4256']()
         } else {
-            board_2dcontext['drawImage'](_0x1fb4x1['a5555'], _0x1fb4xb * _0x1fb4x2['b8375'], _0x1fb4xc * _0x1fb4x2['b8375'], _0x1fb4x2['b8375'], _0x1fb4x2['b8375']);
+            board_2dcontext['drawImage'](_0x1fb4x1['a5555'], _0x1fb4xb * _0x1fb4x2['box_size'], _0x1fb4xc * _0x1fb4x2['box_size'], _0x1fb4x2['box_size'], _0x1fb4x2['box_size']);
             _0x1fb4x1['a9483'] = true;
         };
     },
-    hover: function(_0x1fb4x7) {
+    hover: function(arg) {
         if (!_0x1fb4x1['a9483']) {
-            var _0x1fb4xe = Math['max'](0, Math['floor']((_0x1fb4x7['pageX'] - board[0]['offsetLeft']) / _0x1fb4x2['b8375'])),
-                _0x1fb4xf = Math['max'](0, Math['floor']((_0x1fb4x7['pageY'] - board[0]['offsetTop']) / _0x1fb4x2['b8375'])),
+            var _0x1fb4xe = Math['max'](0, Math['floor']((arg['pageX'] - board[0]['offsetLeft']) / _0x1fb4x2['box_size'])),
+                _0x1fb4xf = Math['max'](0, Math['floor']((arg['pageY'] - board[0]['offsetTop']) / _0x1fb4x2['box_size'])),
                 _0x1fb4x10 = (_0x1fb4x1['b9381'][_0x1fb4xe][_0x1fb4xf]) ? 1 : -1;
             var _0x1fb4x11 = _0x1fb4x1['b2456'][0],
                 _0x1fb4x12 = _0x1fb4x1['b2456'][1];
@@ -263,16 +263,16 @@ var _0x1fb4x21 = {
                     this['c1168'](_0x1fb4xe, _0x1fb4xf);
                     var _0x1fb4x29 = this['b9987'](_0x1fb4x1['a1122'][_0x1fb4xe][_0x1fb4xf]);
                     board_2dcontext['fillStyle'] = 'rgb(' + _0x1fb4x29[0] + ',' + _0x1fb4x29[1] + ',' + _0x1fb4x29[2] + ')';
-                    board_2dcontext['fillText'](_0x1fb4x1['a1122'][_0x1fb4xe][_0x1fb4xf]['toFixed'](1), (_0x1fb4xe * _0x1fb4x2['b8375']) + 5, (_0x1fb4xf * _0x1fb4x2['b8375']) + 20);
+                    board_2dcontext['fillText'](_0x1fb4x1['a1122'][_0x1fb4xe][_0x1fb4xf]['toFixed'](1), (_0x1fb4xe * _0x1fb4x2['box_size']) + 5, (_0x1fb4xf * _0x1fb4x2['box_size']) + 20);
                 }
             }
         }
     },
     c1168: function(_0x1fb4xe, _0x1fb4xf) {
-        var _0x1fb4x2a = _0x1fb4x2['b8375'] - 1,
-            _0x1fb4x2b = _0x1fb4x2['b8375'] - 1,
-            _0x1fb4xe = _0x1fb4xe * _0x1fb4x2['b8375'],
-            _0x1fb4xf = _0x1fb4xf * _0x1fb4x2['b8375'];
+        var _0x1fb4x2a = _0x1fb4x2['box_size'] - 1,
+            _0x1fb4x2b = _0x1fb4x2['box_size'] - 1,
+            _0x1fb4xe = _0x1fb4xe * _0x1fb4x2['box_size'],
+            _0x1fb4xf = _0x1fb4xf * _0x1fb4x2['box_size'];
         board_2dcontext['beginPath']();
         board_2dcontext['moveTo'](_0x1fb4xe + _0x1fb4x2['b3111'], _0x1fb4xf);
         board_2dcontext['lineTo'](_0x1fb4xe + _0x1fb4x2a - _0x1fb4x2['b3111'], _0x1fb4xf);
