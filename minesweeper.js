@@ -32,7 +32,7 @@ var board_2dcontext;
 
 "use strict";
 var _0x1fb4x4 = {
-    compute_math_stuff: function() {
+    initialize: function() {
         board = $('#board');
         board_2dcontext = board[0]['getContext']('2d');
         board_2dcontext['a5782'] = _0x1fb4x2['a5782'];
@@ -117,7 +117,7 @@ var _0x1fb4xa = {
         for (var _0x1fb4xd = 0; _0x1fb4xd < _0x388fx3[_0x1fb4xc][_0x1fb4xb]['length']; _0x1fb4xd++) {
             _0x1fb4x1['b3817'][_0x388fx3[_0x1fb4xc][_0x1fb4xb][_0x1fb4xd]] += _0x388fx4[_0x1fb4xc][_0x1fb4xb][_0x1fb4xd]
         };
-        _0x1fb4x1['a1122'] = this['c1849']();
+        _0x1fb4x1['a1122'] = this['compute_neighbor_values']();
         if (_0x1fb4x1['a1122']) {
             _0x1fb4x21['b4256']()
         } else {
@@ -155,7 +155,7 @@ var _0x1fb4xa = {
         for (var _0x1fb4xd = 0; _0x1fb4xd < _0x388fx3[_0x1fb4xf][_0x1fb4xe]['length']; _0x1fb4xd++) {
             _0x1fb4x1['b3817'][_0x388fx3[_0x1fb4xf][_0x1fb4xe][_0x1fb4xd]] -= _0x388fx4[_0x1fb4xf][_0x1fb4xe][_0x1fb4xd]
         };
-        _0x1fb4x1['a1122'] = this['c1849']();
+        _0x1fb4x1['a1122'] = this['compute_neighbor_values']();
         board_2dcontext['fillStyle'] = _0x1fb4x2['c9582'];
         _0x1fb4x21['c1168'](_0x1fb4xe, _0x1fb4xf);
         if (_0x1fb4x1['a1122']) {
@@ -163,14 +163,14 @@ var _0x1fb4xa = {
             _0x1fb4x1['a9483'] = false;
         };
     },
-    c1849: function() {
+    compute_neighbor_values: function() {
         var _0x1fb4x14 = Array(_0x1fb4x1['c8921']);
         var _0x1fb4x15 = 0,
             _0x1fb4x16 = 0;
         for (var _0x1fb4x17 = 0; _0x1fb4x17 < _0x1fb4x1['c8921']; _0x1fb4x17++) {
             _0x1fb4x14[_0x1fb4x17] = Array(_0x1fb4x1['a9265']);
             for (var _0x1fb4x18 = 0; _0x1fb4x18 < _0x1fb4x1['a9265']; _0x1fb4x18++) {
-                if (_0x1fb4x1['b9381'][_0x1fb4x17][_0x1fb4x18]) {
+                if (true) {
                     _0x1fb4x14[_0x1fb4x17][_0x1fb4x18] = 1;
                     _0x1fb4x16 = 1;
                     for (var _0x1fb4x19 = 0; _0x1fb4x19 <= 1; _0x1fb4x19++) {
@@ -215,6 +215,7 @@ var _0x1fb4xa = {
         if (_0x1fb4x16 && _0x1fb4x15 < 0.01) {
             return undefined
         };
+        console.log(_0x1fb4x14);
         return _0x1fb4x14;
     }
 };
@@ -290,5 +291,5 @@ var _0x1fb4x21 = {
 
 
 $(function() {
-    _0x1fb4x4.compute_math_stuff();
+    _0x1fb4x4.initialize();
 });
