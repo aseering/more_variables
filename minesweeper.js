@@ -7,7 +7,7 @@ var state = {
     a9699: 0,
     undo_stack: null,
     neighbor_values: '',
-    b9381: '',
+    has_been_clicked: '',
     b1124: '',
     b2456: new Array(2),
     width: '',
@@ -53,7 +53,7 @@ var _0x1fb4x4 = {
             };
         };
         state['neighbor_values'] = new Array(state['width']);
-        state['b9381'] = new Array(state['width']);
+        state['has_been_clicked'] = new Array(state['width']);
         _0x1fb4x3['c9381'] = $('#restartbtn');
         _0x1fb4x3['a7812'] = $('#undobtn');
         _0x1fb4x3['c9381']['on']({
@@ -86,9 +86,9 @@ var _0x1fb4x4 = {
         state['a9483'] = false;
         state['a9699'] = config['a2435'];
         state['neighbor_values'] = undefined;
-        state['b9381'] = Array(state['width']);
+        state['has_been_clicked'] = Array(state['width']);
         for (var _0x1fb4x8 = 0; _0x1fb4x8 < state['width']; _0x1fb4x8++) {
-            state['b9381'][_0x1fb4x8] = Array(state['height'])
+            state['has_been_clicked'][_0x1fb4x8] = Array(state['height'])
         };
         state['b3817'] = new Array(_0x388fx2['length']);
         for (var _0x1fb4x9 = 0; _0x1fb4x9 < _0x388fx2['length']; _0x1fb4x9++) {
@@ -110,14 +110,14 @@ var _0x1fb4xa = {
         };
         var box_x_coord = Math['max'](0, Math['floor']((arg['pageX'] - board[0]['offsetLeft']) / config['box_size'])),
             box_y_coord = Math['max'](0, Math['floor']((arg['pageY'] - board[0]['offsetTop']) / config['box_size']));
-        if (arg['which'] !== 1 || state['b9381'][box_x_coord][box_y_coord]) {
+        if (arg['which'] !== 1 || state['has_been_clicked'][box_x_coord][box_y_coord]) {
             return false
         };
 	this.handle_event_on_coord(box_x_coord, box_y_coord);
     },
     handle_event_on_coord: function(box_x_coord, box_y_coord) {
         state['undo_stack']['push']([box_x_coord, box_y_coord]);
-        state['b9381'][box_x_coord][box_y_coord] = 1;
+        state['has_been_clicked'][box_x_coord][box_y_coord] = 1;
         for (var _0x1fb4xd = 0; _0x1fb4xd < _0x388fx3[box_y_coord][box_x_coord]['length']; _0x1fb4xd++) {
             state['b3817'][_0x388fx3[box_y_coord][box_x_coord][_0x1fb4xd]] += _0x388fx4[box_y_coord][box_x_coord][_0x1fb4xd]
         };
@@ -133,10 +133,10 @@ var _0x1fb4xa = {
         if (!state['a9483']) {
             var _0x1fb4xe = Math['max'](0, Math['floor']((arg['pageX'] - board[0]['offsetLeft']) / config['box_size'])),
                 _0x1fb4xf = Math['max'](0, Math['floor']((arg['pageY'] - board[0]['offsetTop']) / config['box_size'])),
-                _0x1fb4x10 = (state['b9381'][_0x1fb4xe][_0x1fb4xf]) ? 1 : -1;
+                _0x1fb4x10 = (state['has_been_clicked'][_0x1fb4xe][_0x1fb4xf]) ? 1 : -1;
             var _0x1fb4x11 = state['b2456'][0],
                 _0x1fb4x12 = state['b2456'][1];
-            if (typeof _0x1fb4x11 !== 'undefined' && state['b9381'][_0x1fb4x11][_0x1fb4x12] !== 1) {
+            if (typeof _0x1fb4x11 !== 'undefined' && state['has_been_clicked'][_0x1fb4x11][_0x1fb4x12] !== 1) {
                 board_2dcontext['fillStyle'] = config['c9582'];
                 _0x1fb4x21['c1168'](state['b2456'][0], state['b2456'][1]);
             };
@@ -155,7 +155,7 @@ var _0x1fb4xa = {
         var _0x1fb4x13 = state['undo_stack']['pop']();
         var _0x1fb4xe = _0x1fb4x13[0],
             _0x1fb4xf = _0x1fb4x13[1];
-        state['b9381'][_0x1fb4xe][_0x1fb4xf] = 0;
+        state['has_been_clicked'][_0x1fb4xe][_0x1fb4xf] = 0;
         for (var _0x1fb4xd = 0; _0x1fb4xd < _0x388fx3[_0x1fb4xf][_0x1fb4xe]['length']; _0x1fb4xd++) {
             state['b3817'][_0x388fx3[_0x1fb4xf][_0x1fb4xe][_0x1fb4xd]] -= _0x388fx4[_0x1fb4xf][_0x1fb4xe][_0x1fb4xd]
         };
@@ -169,15 +169,15 @@ var _0x1fb4xa = {
     },
 
     compute_neighbor_values: function() {
-        var _0x1fb4x14 = Array(state['width']);
-        var _0x1fb4x15 = 0,
-            _0x1fb4x16 = 0;
+        var neighbor_values = Array(state['width']);
+        var total_neighbor_values = 0,
+            any_squares_tried = 0;
         for (var x = 0; x < state['width']; x++) {
-            _0x1fb4x14[x] = Array(state['height']);
+            neighbor_values[x] = Array(state['height']);
             for (var y = 0; y < state['height']; y++) {
                 if (true) {
-                    _0x1fb4x14[x][y] = 1;
-                    _0x1fb4x16 = 1;
+                    neighbor_values[x][y] = 1;
+                    any_squares_tried = 1;
                     for (var _0x1fb4x19 = 0; _0x1fb4x19 <= 1; _0x1fb4x19++) {
                         var _0x1fb4x1a = [0, 1];
                         var _0x1fb4x5 = _0x388fx5[y][x];
@@ -206,22 +206,22 @@ var _0x1fb4xa = {
                             if (_0x1fb4x20 < 1e-20) {
                                 return undefined
                             };
-                            _0x1fb4x14[x][y] /= _0x1fb4x20;
+                            neighbor_values[x][y] /= _0x1fb4x20;
                         } else {
-                            _0x1fb4x14[x][y] *= _0x1fb4x20
+                            neighbor_values[x][y] *= _0x1fb4x20
                         };
                     };
-                    _0x1fb4x15 += _0x1fb4x14[x][y];
+                    total_neighbor_values += neighbor_values[x][y];
                 } else {
-                    _0x1fb4x14[x][y] = 0
+                    neighbor_values[x][y] = 0
                 }
             };
         };
-        if (_0x1fb4x16 && _0x1fb4x15 < 0.01) {
+        if (any_squares_tried && total_neighbor_values < 0.01) {
             return undefined
         };
-        console.log(_0x1fb4x14);
-        return _0x1fb4x14;
+        console.log(neighbor_values);
+        return neighbor_values;
     }
 
 };
@@ -264,7 +264,7 @@ var _0x1fb4x21 = {
         // hacked to draw on all squares
         for (var _0x1fb4xe = 0; _0x1fb4xe < state['width']; _0x1fb4xe++) {
             for (var _0x1fb4xf = 0; _0x1fb4xf < state['height']; _0x1fb4xf++) {
-                if (state['b9381'][_0x1fb4xe][_0x1fb4xf]) {
+                if (state['has_been_clicked'][_0x1fb4xe][_0x1fb4xf]) {
                     board_2dcontext['strokeStyle'] = 'white';
                     board_2dcontext['fillStyle'] = 'white';
                     this['c1168'](_0x1fb4xe, _0x1fb4xf);
