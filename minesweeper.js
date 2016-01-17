@@ -98,6 +98,7 @@ var _0x1fb4x4 = {
         _0x1fb4x21['c1144']();
     }
 };
+
 var _0x1fb4xa = {
     handle_mouse_up: function(arg) {
         if (arg['which'] === 3) {
@@ -107,21 +108,24 @@ var _0x1fb4xa = {
         if (_0x1fb4x1['a9483']) {
             return false
         };
-        var _0x1fb4xb = Math['max'](0, Math['floor']((arg['pageX'] - board[0]['offsetLeft']) / _0x1fb4x2['box_size'])),
-            _0x1fb4xc = Math['max'](0, Math['floor']((arg['pageY'] - board[0]['offsetTop']) / _0x1fb4x2['box_size']));
-        if (arg['which'] !== 1 || _0x1fb4x1['b9381'][_0x1fb4xb][_0x1fb4xc]) {
+        var box_x_coord = Math['max'](0, Math['floor']((arg['pageX'] - board[0]['offsetLeft']) / _0x1fb4x2['box_size'])),
+            box_y_coord = Math['max'](0, Math['floor']((arg['pageY'] - board[0]['offsetTop']) / _0x1fb4x2['box_size']));
+        if (arg['which'] !== 1 || _0x1fb4x1['b9381'][box_x_coord][box_y_coord]) {
             return false
         };
-        _0x1fb4x1['a3829']['push']([_0x1fb4xb, _0x1fb4xc]);
-        _0x1fb4x1['b9381'][_0x1fb4xb][_0x1fb4xc] = 1;
-        for (var _0x1fb4xd = 0; _0x1fb4xd < _0x388fx3[_0x1fb4xc][_0x1fb4xb]['length']; _0x1fb4xd++) {
-            _0x1fb4x1['b3817'][_0x388fx3[_0x1fb4xc][_0x1fb4xb][_0x1fb4xd]] += _0x388fx4[_0x1fb4xc][_0x1fb4xb][_0x1fb4xd]
+	this.handle_event_on_coord(box_x_coord, box_y_coord);
+    },
+    handle_event_on_coord: function(box_x_coord, box_y_coord) {
+        _0x1fb4x1['a3829']['push']([box_x_coord, box_y_coord]);
+        _0x1fb4x1['b9381'][box_x_coord][box_y_coord] = 1;
+        for (var _0x1fb4xd = 0; _0x1fb4xd < _0x388fx3[box_y_coord][box_x_coord]['length']; _0x1fb4xd++) {
+            _0x1fb4x1['b3817'][_0x388fx3[box_y_coord][box_x_coord][_0x1fb4xd]] += _0x388fx4[box_y_coord][box_x_coord][_0x1fb4xd]
         };
         _0x1fb4x1['a1122'] = this['compute_neighbor_values']();
         if (_0x1fb4x1['a1122']) {
             _0x1fb4x21['b4256']()
         } else {
-            board_2dcontext['drawImage'](_0x1fb4x1['a5555'], _0x1fb4xb * _0x1fb4x2['box_size'], _0x1fb4xc * _0x1fb4x2['box_size'], _0x1fb4x2['box_size'], _0x1fb4x2['box_size']);
+            board_2dcontext['drawImage'](_0x1fb4x1['a5555'], box_x_coord * _0x1fb4x2['box_size'], box_y_coord * _0x1fb4x2['box_size'], _0x1fb4x2['box_size'], _0x1fb4x2['box_size']);
             _0x1fb4x1['a9483'] = true;
         };
     },
@@ -289,6 +293,9 @@ var _0x1fb4x21 = {
     }
 };
 
+function do_game_click(x, y) {
+    _0x1fb4xa.handle_event_on_coord(x,y);
+}
 
 $(function() {
     _0x1fb4x4.initialize();
