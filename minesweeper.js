@@ -90,8 +90,8 @@ var _0x1fb4x4 = {
         for (var _0x1fb4x8 = 0; _0x1fb4x8 < state['width']; _0x1fb4x8++) {
             state['has_been_clicked'][_0x1fb4x8] = Array(state['height'])
         };
-        state['b3817'] = new Array(_0x388fx2['length']);
-        for (var _0x1fb4x9 = 0; _0x1fb4x9 < _0x388fx2['length']; _0x1fb4x9++) {
+        state['b3817'] = new Array(data2['length']);
+        for (var _0x1fb4x9 = 0; _0x1fb4x9 < data2['length']; _0x1fb4x9++) {
             state['b3817'][_0x1fb4x9] = 0
         };
         window['clearInterval'](state['b1124']);
@@ -118,8 +118,8 @@ var _0x1fb4xa = {
     handle_event_on_coord: function(box_x_coord, box_y_coord) {
         state['undo_stack']['push']([box_x_coord, box_y_coord]);
         state['has_been_clicked'][box_x_coord][box_y_coord] = 1;
-        for (var _0x1fb4xd = 0; _0x1fb4xd < _0x388fx3[box_y_coord][box_x_coord]['length']; _0x1fb4xd++) {
-            state['b3817'][_0x388fx3[box_y_coord][box_x_coord][_0x1fb4xd]] += _0x388fx4[box_y_coord][box_x_coord][_0x1fb4xd]
+        for (var _0x1fb4xd = 0; _0x1fb4xd < data3[box_y_coord][box_x_coord]['length']; _0x1fb4xd++) {
+            state['b3817'][data3[box_y_coord][box_x_coord][_0x1fb4xd]] += data4[box_y_coord][box_x_coord][_0x1fb4xd]
         };
         state['neighbor_values'] = this['compute_neighbor_values']();
         if (state['neighbor_values']) {
@@ -156,8 +156,8 @@ var _0x1fb4xa = {
         var _0x1fb4xe = _0x1fb4x13[0],
             _0x1fb4xf = _0x1fb4x13[1];
         state['has_been_clicked'][_0x1fb4xe][_0x1fb4xf] = 0;
-        for (var _0x1fb4xd = 0; _0x1fb4xd < _0x388fx3[_0x1fb4xf][_0x1fb4xe]['length']; _0x1fb4xd++) {
-            state['b3817'][_0x388fx3[_0x1fb4xf][_0x1fb4xe][_0x1fb4xd]] -= _0x388fx4[_0x1fb4xf][_0x1fb4xe][_0x1fb4xd]
+        for (var _0x1fb4xd = 0; _0x1fb4xd < data3[_0x1fb4xf][_0x1fb4xe]['length']; _0x1fb4xd++) {
+            state['b3817'][data3[_0x1fb4xf][_0x1fb4xe][_0x1fb4xd]] -= data4[_0x1fb4xf][_0x1fb4xe][_0x1fb4xd]
         };
         state['neighbor_values'] = this['compute_neighbor_values']();
         board_2dcontext['fillStyle'] = config['c9582'];
@@ -180,12 +180,12 @@ var _0x1fb4xa = {
                     any_squares_tried = 1;
                     for (var should_divide = 0; should_divide <= 1; should_divide++) {
                         var _0x1fb4x1a = [0, 1];
-                        var _0x1fb4x5 = _0x388fx5[y][x];
+                        var _0x1fb4x5 = data5[y][x];
                         for (var _0x1fb4x1b = 0; _0x1fb4x1b < _0x1fb4x5['length']; _0x1fb4x1b++) {
                             if (_0x1fb4x1b == should_divide) {
                                 continue
                             };
-                            var _0x1fb4x1c = _0x388fx1[_0x388fx2[_0x1fb4x5[_0x1fb4x1b]][state['b3817'][_0x1fb4x5[_0x1fb4x1b]]]];
+                            var _0x1fb4x1c = data1[data2[_0x1fb4x5[_0x1fb4x1b]][state['b3817'][_0x1fb4x5[_0x1fb4x1b]]]];
                             var _0x1fb4x1d = new Array(Math['min'](_0x1fb4x1a['length'] + _0x1fb4x1c['length'] - 2, state['a9699'] + 2 - _0x1fb4x1a[0] - _0x1fb4x1c[0]));
                             _0x1fb4x1d[0] = _0x1fb4x1a[0] + _0x1fb4x1c[0];
                             for (var _0x1fb4x1e = 1; _0x1fb4x1e < _0x1fb4x1d['length']; _0x1fb4x1e++) {
