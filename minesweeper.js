@@ -32,7 +32,7 @@ var board_2dcontext;
 
 "use strict";
 var _0x1fb4x4 = {
-    compute_math_stuff: function() {
+    initialize: function() {
         board = $('#board');
         board_2dcontext = board[0]['getContext']('2d');
         board_2dcontext['a5782'] = _0x1fb4x2['a5782'];
@@ -290,5 +290,5 @@ var _0x1fb4x21 = {
 
 
 $(function() {
-    _0x1fb4x4.compute_math_stuff();
+    _0x1fb4x4.initialize();
 });
