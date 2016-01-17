@@ -182,28 +182,34 @@ var _0x1fb4xa = {
                     neighbor_values[x][y] = 1;
                     any_squares_tried = 1;
                     for (var should_divide = 0; should_divide <= 1; should_divide++) {
-                        var _0x1fb4x1a = [0, 1];
-                        var _0x1fb4x5 = data5[y][x];
-                        for (var _0x1fb4x1b = 0; _0x1fb4x1b < _0x1fb4x5['length']; _0x1fb4x1b++) {
-                            if (_0x1fb4x1b == should_divide) {
+                        var current = [0, 1];
+                        var magic_indexes = data5[y][x];
+                        for (var n = 0; n < magic_indexes['length']; n++) {
+                            if (n == should_divide) {
                                 continue
                             };
-                            var _0x1fb4x1c = data1[data2[_0x1fb4x5[_0x1fb4x1b]][state['b3817'][_0x1fb4x5[_0x1fb4x1b]]]];
-                            var _0x1fb4x1d = new Array(Math['min'](_0x1fb4x1a['length'] + _0x1fb4x1c['length'] - 2, state['a9699'] + 2 - _0x1fb4x1a[0] - _0x1fb4x1c[0]));
-                            _0x1fb4x1d[0] = _0x1fb4x1a[0] + _0x1fb4x1c[0];
-                            for (var i = 1; i < _0x1fb4x1d['length']; i++) {
-                                _0x1fb4x1d[i] = 0
+                            var magic_index = magic_indexes[n];
+                            var magic_data = data1[data2[magic_index][state['b3817'][magic_index]]];
+                            var next = new Array(Math['min'](current['length'] + magic_data['length'] - 2, state['a9699'] + 2 - current[0] - magic_data[0]));
+                            next[0] = current[0] + magic_data[0];
+                            for (var i = 1; i < next['length']; i++) {
+                                next[i] = 0
                             };
-                            for (var i = 1; i < _0x1fb4x1a['length']; i++) {
-                                for (var j = 1; j < _0x1fb4x1c['length'] && i + j - 1 < _0x1fb4x1d['length']; j++) {
-                                    _0x1fb4x1d[i + j - 1] += _0x1fb4x1a[i] * _0x1fb4x1c[j]
+                            for (var i = 1; i < current['length']; i++) {
+                                for (var j = 1; j < magic_data['length'] && i + j - 1 < next['length']; j++) {
+                                    next[i + j - 1] += current[i] * magic_data[j]
                                 }
                             };
-                            _0x1fb4x1a = _0x1fb4x1d;
+                            current = next;
+                            if (x == 0 && y == 0) {
+                                console.log(n);
+                                console.log(magic_data);
+                                console.log(current);
+                            }
                         };
                         var _0x1fb4x20 = 0;
-                        if (_0x1fb4x1a[0] + _0x1fb4x1a['length'] - 1 == state['a9699'] + 1) {
-                            _0x1fb4x20 = _0x1fb4x1a[_0x1fb4x1a['length'] - 1]
+                        if (current[0] + current['length'] - 1 == state['a9699'] + 1) {
+                            _0x1fb4x20 = current[current['length'] - 1]
                         };
                         if (should_divide) {
                             if (_0x1fb4x20 < 1e-20) {
