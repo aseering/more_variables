@@ -39,19 +39,22 @@ var _0x1fb4x4 = {
         board_2dcontext['font'] = config['b8314'];
         state['width'] = Math['floor'](config['x_size'] / config['box_size']) - 1;
         state['height'] = Math['floor'](config['y_size'] / config['box_size']) - 1;
-        state['b8377'] = new Array(state['width'] * state['height']);
-        state['b8377'][0] = new Array(state['width'] * state['height']);
-        state['b8377'][0][0] = 1;
-        for (var _0x1fb4x5 = 1; _0x1fb4x5 < state['b8377']['length']; _0x1fb4x5++) {
-            state['b8377'][0][_0x1fb4x5] = 0
+
+        // obvious (...and unused?...) initialization of pascal's triangle
+        state['pascal'] = new Array(state['width'] * state['height']);
+        state['pascal'][0] = new Array(state['width'] * state['height']);
+        state['pascal'][0][0] = 1;
+        for (var i = 1; i < state['pascal']['length']; i++) {
+            state['pascal'][0][i] = 0
         };
-        for (var _0x1fb4x6 = 1; _0x1fb4x6 < state['b8377']['length']; _0x1fb4x6++) {
-            state['b8377'][_0x1fb4x6] = new Array(state['width'] * state['height']);
-            state['b8377'][_0x1fb4x6][0] = 1;
-            for (var _0x1fb4x5 = 1; _0x1fb4x5 < state['b8377']['length']; _0x1fb4x5++) {
-                state['b8377'][_0x1fb4x6][_0x1fb4x5] = state['b8377'][_0x1fb4x6 - 1][_0x1fb4x5] + state['b8377'][_0x1fb4x6 - 1][_0x1fb4x5 - 1]
+        for (var i = 1; i < state['pascal']['length']; i++) {
+            state['pascal'][i] = new Array(state['width'] * state['height']);
+            state['pascal'][i][0] = 1;
+            for (var j = 1; j < state['pascal']['length']; j++) {
+                state['pascal'][i][j] = state['pascal'][i - 1][j] + state['pascal'][i - 1][j - 1]
             };
         };
+
         state['neighbor_values'] = new Array(state['width']);
         state['has_been_clicked'] = new Array(state['width']);
         _0x1fb4x3['restartbtn'] = $('#restartbtn');
