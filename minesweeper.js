@@ -55,15 +55,15 @@ var _0x1fb4x4 = {
         state['neighbor_values'] = new Array(state['width']);
         state['has_been_clicked'] = new Array(state['width']);
         _0x1fb4x3['c9381'] = $('#restartbtn');
-        _0x1fb4x3['a7812'] = $('#undobtn');
+        _0x1fb4x3['undo'] = $('#undobtn');
         _0x1fb4x3['c9381']['on']({
             click: function() {
                 _0x1fb4x4['c4419']()
             }
         });
-        _0x1fb4x3['a7812']['on']({
+        _0x1fb4x3['undo']['on']({
             click: function() {
-                _0x1fb4xa['a7812']()
+                _0x1fb4xa['undo']()
             }
         });
         board['on']({
@@ -102,7 +102,7 @@ var _0x1fb4x4 = {
 var _0x1fb4xa = {
     handle_mouse_up: function(arg) {
         if (arg['which'] === 3) {
-            this['a7812']();
+            this['undo']();
             return true;
         };
         if (state['a9483']) {
@@ -148,7 +148,7 @@ var _0x1fb4xa = {
             };
         }
     },
-    a7812: function() {
+    undo: function() {
         if (state['undo_stack']['length'] === 0) {
             return
         };
@@ -178,11 +178,11 @@ var _0x1fb4xa = {
                 if (true) {
                     neighbor_values[x][y] = 1;
                     any_squares_tried = 1;
-                    for (var _0x1fb4x19 = 0; _0x1fb4x19 <= 1; _0x1fb4x19++) {
+                    for (var should_divide = 0; should_divide <= 1; should_divide++) {
                         var _0x1fb4x1a = [0, 1];
                         var _0x1fb4x5 = _0x388fx5[y][x];
                         for (var _0x1fb4x1b = 0; _0x1fb4x1b < _0x1fb4x5['length']; _0x1fb4x1b++) {
-                            if (_0x1fb4x1b == _0x1fb4x19) {
+                            if (_0x1fb4x1b == should_divide) {
                                 continue
                             };
                             var _0x1fb4x1c = _0x388fx1[_0x388fx2[_0x1fb4x5[_0x1fb4x1b]][state['b3817'][_0x1fb4x5[_0x1fb4x1b]]]];
@@ -202,7 +202,7 @@ var _0x1fb4xa = {
                         if (_0x1fb4x1a[0] + _0x1fb4x1a['length'] - 1 == state['a9699'] + 1) {
                             _0x1fb4x20 = _0x1fb4x1a[_0x1fb4x1a['length'] - 1]
                         };
-                        if (_0x1fb4x19) {
+                        if (should_divide) {
                             if (_0x1fb4x20 < 1e-20) {
                                 return undefined
                             };
